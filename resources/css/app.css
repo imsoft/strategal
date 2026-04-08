@@ -203,3 +203,108 @@ html {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 43, 92, 0.15);
 }
+
+/* Inicio: modo oscuro del SO no debe teñir de gris/azul el hero ni el nav (variantes dark: de Tailwind) */
+.strategal-hero-surface,
+.strategal-video-surface {
+    color-scheme: light;
+}
+
+/* Fondos y texto base: !important por si el CSS compilado no se actualiza en hosting */
+.strategal-hero-surface {
+    background-color: #eceae4 !important;
+    color: #1c1917 !important;
+}
+
+.strategal-video-surface {
+    background-color: #e2e0d8 !important;
+    color: #1c1917 !important;
+}
+
+/* Tarjeta editorial (hero + cabecera de video): mismo lenguaje visual */
+.strategal-copy-card {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid rgb(228 226 222);
+    border-radius: 1.25rem;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 12px 40px rgba(0, 43, 92, 0.07);
+}
+
+.strategal-copy-card--video {
+    border-radius: 1rem;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 8px 28px rgba(0, 43, 92, 0.06);
+}
+
+/* Contenedor del iframe: centrado explícito (evita video pegado a la izquierda) */
+.strategal-youtube-frame {
+    width: 100%;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 16:9 fiable en todos los navegadores (evita la “franja” aplastada) */
+.strategal-youtube-embed {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.strategal-youtube-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.page-home {
+        background-color: #f5f5f4 !important;
+        color: #292524 !important;
+    }
+
+    body.page-home > nav {
+        background-color: rgba(255, 255, 255, 0.97) !important;
+        border-bottom: 1px solid rgb(231 229 228);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    body.page-home .nav-link {
+        color: rgb(75 85 99) !important;
+    }
+
+    body.page-home .nav-link:hover {
+        color: #002b5c !important;
+    }
+
+    body.page-home .nav-link.active {
+        color: #002b5c !important;
+    }
+
+    body.page-home .nav-link.active::after {
+        background-color: #002b5c !important;
+    }
+
+    body.page-home #mobile-menu-button {
+        color: rgb(55 65 81) !important;
+    }
+
+    body.page-home #mobile-menu {
+        background-color: #ffffff !important;
+        border-color: rgb(229 231 235) !important;
+    }
+
+    body.page-home .mobile-nav-link {
+        color: rgb(55 65 81) !important;
+    }
+
+    body.page-home .mobile-nav-link:hover,
+    body.page-home .mobile-nav-link.active {
+        color: #002b5c !important;
+    }
+}

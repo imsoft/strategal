@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <h3 class="text-xl font-bold text-[#002B5C] dark:text-white text-center mb-4 group-hover:text-[#001a3a] transition-colors">
+        <h3 class="text-center mb-4 text-xl font-bold text-[#002B5C] transition-all duration-300 dark:text-white group-hover:scale-105 group-hover:text-[#002B5C] dark:group-hover:text-white">
             {{ $title }}
         </h3>
 

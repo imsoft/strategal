@@ -2,46 +2,126 @@
 
 @section('title', 'Strategal - Inicio')
 
-@section('content')
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-[#002B5C] to-[#001a3a] text-white py-20 lg:py-32 overflow-hidden">
-        <div
-            class="absolute inset-0 opacity-10 bg-cover bg-center"
-            style="background-image: url('{{ asset("images/inicio/apreton-mano-experiencia-confianza.jpeg") }}')"
-        ></div>
+@section('body-class', 'page-home')
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="text-center lg:text-left">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-up">
-                        Soluciones Legales <span class="text-blue-300">Integrales</span> para su Empresa
-                    </h1>
-                    <p class="text-xl text-gray-200 mb-8 leading-relaxed animate-fade-in-up delay-200">
-                        Firma de abogados con amplia experiencia en el sector empresarial, enfocados en ofrecer soluciones oportunas e integrales.
+@section('content')
+    <!-- Hero: bloque de marca siempre claro (el logo JPG suele traer fondo blanco) -->
+    <section
+        class="strategal-hero-surface relative overflow-hidden border-b border-stone-300/60 bg-[#eceae4] pt-14 pb-16 text-stone-900 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
+        aria-labelledby="hero-heading"
+    >
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#002B5C]/25 to-transparent"></div>
+
+        <div class="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 text-center sm:px-8">
+            <div class="animate-fade-in-up w-full">
+                <a
+                    href="{{ route('home') }}"
+                    class="group mx-auto block w-fit rounded-2xl bg-white p-6 shadow-[0_2px_8px_rgba(0,43,92,0.08)] ring-1 ring-stone-200/80 transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,43,92,0.12)] sm:p-8"
+                >
+                    <img
+                        src="{{ asset('images/logo/logotipo.jpg') }}"
+                        alt="Strategal Servicios Legales"
+                        class="mx-auto h-auto max-h-[5.5rem] w-auto max-w-[220px] object-contain sm:max-h-24 sm:max-w-[248px]"
+                        width="260"
+                        height="90"
+                        loading="eager"
+                    >
+                </a>
+            </div>
+
+            <article class="strategal-copy-card mt-10 w-full max-w-xl px-7 py-9 text-center sm:mt-12 sm:px-10 sm:py-11 animate-fade-in-up delay-100">
+                <div class="mb-6 flex items-center justify-center gap-3 sm:gap-4">
+                    <span class="h-px w-8 bg-[#002B5C]/35 sm:w-12" aria-hidden="true"></span>
+                    <p class="text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-stone-500 sm:text-xs">
+                        Servicios legales
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-400">
-                        <x-button href="{{ route('contact') }}" variant="secondary">
-                            Contáctanos
-                        </x-button>
-                        <x-button href="{{ route('practice-areas') }}" variant="outline" class="bg-transparent border-white text-white hover:bg-white hover:text-[#002B5C]">
-                            Nuestros Servicios
-                        </x-button>
-                    </div>
+                    <span class="h-px w-8 bg-[#002B5C]/35 sm:w-12" aria-hidden="true"></span>
                 </div>
 
-                <div class="animate-fade-in-right delay-300 w-full max-w-3xl mx-auto lg:mx-0 lg:max-w-none">
-                    <div class="relative w-full aspect-video rounded-lg shadow-2xl overflow-hidden ring-1 ring-white/10">
-                        <iframe
-                            class="absolute inset-0 w-full h-full"
-                            src="https://www.youtube.com/embed/MEP_H0KwK00?rel=0"
-                            title="Strategal Servicios Legales — video"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
+                <h1
+                    id="hero-heading"
+                    class="text-pretty animate-fade-in-up delay-200"
+                    style="font-family: Montserrat, ui-sans-serif, system-ui, sans-serif;"
+                >
+                    <span class="flex items-start justify-center gap-2 sm:gap-3">
+                        <span class="select-none pt-0.5 text-2xl font-light leading-none text-[#002B5C]/35 sm:text-3xl" aria-hidden="true">«</span>
+                        <span class="min-w-0 flex-1 text-center">
+                            <span class="block text-[1.35rem] font-semibold leading-snug tracking-tight text-[#062042] sm:text-2xl md:text-[1.75rem]">
+                                Soluciones legales estratégicas
+                            </span>
+                            <span class="mt-2.5 block text-base font-medium leading-snug text-[#123a62] sm:mt-3 sm:text-lg md:text-xl">
+                                para empresas con visión de crecimiento
+                            </span>
+                        </span>
+                        <span class="select-none pt-0.5 text-2xl font-light leading-none text-[#002B5C]/35 sm:text-3xl" aria-hidden="true">»</span>
+                    </span>
+                </h1>
+
+                <p class="mx-auto mt-8 max-w-md text-pretty border-t border-stone-200/90 pt-8 text-[0.95rem] leading-relaxed text-stone-600 sm:text-base">
+                    Firma enfocada en el sector empresarial: asesoría integral, cercana y con resultados medibles.
+                </p>
+
+                <div class="mt-9 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4">
+                    <x-button
+                        href="{{ route('contact') }}"
+                        variant="primary"
+                        class="inline-flex min-h-[2.875rem] min-w-[11rem] shrink-0 justify-center px-8 py-2.5 text-sm shadow-[0_2px_12px_rgba(0,43,92,0.25)] sm:min-w-[12rem]"
+                    >
+                        Contáctanos
+                    </x-button>
+                    <x-button
+                        href="{{ route('practice-areas') }}"
+                        variant="outline"
+                        class="inline-flex min-h-[2.875rem] min-w-[11rem] shrink-0 justify-center border-2 !border-[#002B5C] bg-white px-8 py-2.5 text-sm font-semibold !text-[#002B5C] shadow-sm hover:bg-[#002B5C] hover:!text-white dark:!border-[#002B5C] dark:!text-[#002B5C] dark:hover:!bg-[#002B5C] dark:hover:!text-white sm:min-w-[12rem]"
+                    >
+                        Nuestros servicios
+                    </x-button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Video: embed 16:9 + marco centrado -->
+    <section class="strategal-video-surface border-b border-stone-300/50 bg-[#e2e0d8] py-16 sm:py-20" aria-label="Video institucional">
+        <div class="mx-auto w-full max-w-4xl px-5 sm:px-8">
+            <header class="strategal-copy-card strategal-copy-card--video mx-auto max-w-xl px-7 py-8 text-center sm:px-9 sm:py-9">
+                <div class="mb-5 flex items-center justify-center gap-3 sm:gap-4">
+                    <span class="h-px w-8 bg-[#002B5C]/35 sm:w-12" aria-hidden="true"></span>
+                    <p class="text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-stone-500 sm:text-xs">
+                        Conoce nuestra firma
+                    </p>
+                    <span class="h-px w-8 bg-[#002B5C]/35 sm:w-12" aria-hidden="true"></span>
+                </div>
+                <h2 class="text-xl font-semibold tracking-tight text-[#062042] sm:text-2xl">Video institucional</h2>
+                <p class="mx-auto mt-3 max-w-md text-pretty text-[0.95rem] leading-relaxed text-stone-600">
+                    Presentación de Strategal en YouTube. Si no ves el reproductor, abre el enlace inferior.
+                </p>
+            </header>
+
+            <div class="strategal-youtube-frame mt-10 sm:mt-12">
+                <div class="strategal-youtube-embed overflow-hidden rounded-2xl bg-black shadow-[0_12px_40px_rgba(0,0,0,0.18)] ring-1 ring-black/15">
+                    <iframe
+                        src="https://www.youtube.com/embed/MEP_H0KwK00?rel=0&amp;modestbranding=1"
+                        title="Strategal Servicios Legales — video en YouTube"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        loading="lazy"
+                    ></iframe>
                 </div>
             </div>
+
+            <p class="mt-8 text-center">
+                <a
+                    href="https://youtu.be/MEP_H0KwK00"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#002B5C] underline decoration-[#002B5C]/50 underline-offset-[6px] transition-colors hover:text-[#001433] hover:decoration-[#001433]"
+                >
+                    Ver en YouTube
+                    <span aria-hidden="true" class="text-base">→</span>
+                </a>
+            </p>
         </div>
     </section>
 
