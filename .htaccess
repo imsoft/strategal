@@ -1,15 +1,9 @@
 # =============================================================================
-# SOLO cuando el DocumentRoot del dominio apunta a la RAIZ de este proyecto
-# (donde estan artisan, app/, vendor/, carpeta public/, etc.).
-# =============================================================================
+# SOLO si el DocumentRoot apunta a la RAIZ del proyecto (artisan, app/, public/).
+# NO copies este archivo a public_html: usa alli solo public/.htaccess (mismo que public_html/.htaccess del repo).
 #
-# NUNCA copies este archivo a public_html ni a public/.
-# En public_html debe ir SOLO el mismo contenido que public/.htaccess
-# (sin reglas que manden a la subcarpeta "public/").
-#
-# Si tu hosting usa public_html como raiz del sitio, sube el archivo:
-#   public_html/.htaccess   (esta en el repo, copia su contenido al servidor)
-# y BORRA de public_html cualquier .htaccess que reescriba a "public/".
+# AH00124 (10 internal redirects): suele ser bucle al reescribir a public/ sin [END].
+# [END] detiene TODO el motor de reescritura para esta peticion (Apache 2.3.9+).
 # =============================================================================
 
 DirectoryIndex public/index.php
@@ -23,6 +17,10 @@ DirectoryIndex public/index.php
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(.*)$ public/$1 [L]
+    # Ya bajo /public/: no reescribir de nuevo (evita public/public/... en algunos entornos)
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
+
+    # Una sola pasada efectiva hacia public/; [END] evita bucle AH00124
+    RewriteRule ^(.*)$ public/$1 [END]
 </IfModule>
