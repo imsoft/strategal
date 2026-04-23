@@ -1,4 +1,11 @@
-# Minimal: no "Options" here (many shared hosts forbid it in .htaccess -> HTTP 500).
+# =============================================================================
+# USAR EN: public_html (o la carpeta que sea el DocumentRoot del dominio)
+# Es el mismo contenido que public/.htaccess — front controller de Laravel.
+#
+# NO uses aqui el .htaccess de la RAIZ del proyecto (el que redirige a public/).
+# Ese en public_html causa error 500 porque no existe public_html/public/...
+# =============================================================================
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 

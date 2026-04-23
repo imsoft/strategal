@@ -1,12 +1,21 @@
-DirectoryIndex index.php
+# =============================================================================
+# SOLO cuando el DocumentRoot del dominio apunta a la RAIZ de este proyecto
+# (donde estan artisan, app/, vendor/, carpeta public/, etc.).
+# =============================================================================
+#
+# NUNCA copies este archivo a public_html ni a public/.
+# En public_html debe ir SOLO el mismo contenido que public/.htaccess
+# (sin reglas que manden a la subcarpeta "public/").
+#
+# Si tu hosting usa public_html como raiz del sitio, sube el archivo:
+#   public_html/.htaccess   (esta en el repo, copia su contenido al servidor)
+# y BORRA de public_html cualquier .htaccess que reescriba a "public/".
+# =============================================================================
+
+DirectoryIndex public/index.php
 
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
     RewriteEngine On
-    RewriteBase /
 
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -14,18 +23,6 @@ DirectoryIndex index.php
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Quitar barra final (excepto carpetas reales)
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Si el recurso existe en public/ (Vite /build, favicon, robots, etc.)
-    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+    RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
-
-    # Cualquier otra URL → front controller de Laravel (ruta absoluta desde la raíz del sitio)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule .* /public/index.php [L]
 </IfModule>
